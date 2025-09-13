@@ -80,8 +80,6 @@ Password: `1234`
 
 <!-- Testing roadmap removed for now to keep focus on the current implementation. -->
 
----
-
 <!-- Available scripts section removed per instruction. -->
 
 ---

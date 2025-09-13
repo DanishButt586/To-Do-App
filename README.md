@@ -58,6 +58,7 @@ To-Do-App/
 ```
 
 ### 🧭 How the App Works (UI Perspective)
+
 1. You open the app and see an input box to add a new task and a list of existing tasks.
 2. Type a title and submit – the task appears instantly with a checkbox (completed state is initially off).
 3. Click the checkbox to toggle completion; the UI reflects the new state and persists it.
@@ -75,12 +76,7 @@ Static credentials (for demo only):
 
 Username: `admin`
 Password: `1234`
-
----
-
 <!-- API Reference section intentionally removed per current scope: focusing on user-facing behavior rather than endpoint documentation. -->
-
----
 
 <!-- Testing roadmap removed for now to keep focus on the current implementation. -->
 

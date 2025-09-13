@@ -76,8 +76,6 @@ Static credentials (for demo only):
 Username: `admin`
 Password: `1234`
 
-Currently tasks are not locked to a user; this login is just a learning placeholder.
-
 ---
 
 <!-- API Reference section intentionally removed per current scope: focusing on user-facing behavior rather than endpoint documentation. -->

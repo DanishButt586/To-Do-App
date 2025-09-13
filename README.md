@@ -1,8 +1,10 @@
-# MERN To-Do Application
+# MERN To‑Do Application
 
-A lightweight MERN (MongoDB\* / Express / React / Node) style task management application. This implementation currently uses a JSON file for persistence (no database layer yet) while exposing a REST API that the React (Vite) client consumes. The server code has been written defensively with file‑locking, retry, backup, and recovery logic to keep your task data resilient against partial writes or JSON corruption.
+Hi! I'm **Danish Butt** and this repository contains my **very first MERN stack project**. I built it to learn core full‑stack concepts: structuring a React frontend, exposing a clean REST API with Express, and designing a persistence layer (currently file‑based) that can later be swapped for a real database like MongoDB.
 
-> _Note: MongoDB is not yet integrated; storage is local JSON (`server/tasks.json`). The structure and separation make swapping in a real database straightforward later._
+This app is a lightweight task manager. Even though it's an early learning project, I challenged myself to add production‑style resilience: safe JSON parsing, backups, atomic writes, and a simple modular data layer. I wrote the README myself to document what I learned and where I want to take the project next.
+
+> Note: MongoDB is **not integrated yet**. Data is stored locally in `server/tasks.json` with an automatic backup file. Replacing the store with MongoDB should only require changing `todoStore.js`.
 
 ---
 
@@ -37,60 +39,8 @@ A lightweight MERN (MongoDB\* / Express / React / Node) style task management ap
 To-Do App/
   package.json              # Root: dev script (concurrently)
   README.md
-  client/
-    package.json
-    vite.config.js
-    src/
-      api.js                # REST client with retry + parsing safety
-      App.jsx, Dashboard.jsx
-      ...styles/assets
-  server/
-    index.js                # Express API
-    todoStore.js            # File-backed data layer with locking & backup logic
-    tasks.json              # Primary data file (auto-created)
     tasks.backup.json       # Rolling backup (created automatically)
-    nodemon.json
-```
-
----
-
-## 🏗 Architecture Overview
-
-Frontend (React) calls REST endpoints under `/api/*`. The backend delegates CRUD operations to `todoStore.js`, which:
-
-1. Acquires a mutex to serialize file access
-2. Loads & validates JSON (with multi-attempt parsing and backup restore)
-3. Performs mutation (create/update/remove)
-4. Saves atomically: temp file -> validation -> rename
-5. Maintains a backup copy before each write
-
-This design permits future migration to a DB (Mongo, Postgres, etc.) by swapping only the store implementation while keeping route contracts stable.
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js 18+ (recommended)
-- npm 9+ (comes with Node)
-
-### 1. Clone
-
-```bash
-git clone <your-fork-or-origin-url> To-Do-App
-cd To-Do-App
-```
-
-### 2. Install Dependencies (root script handles both subprojects)
-
-```bash
-npm install        # installs root devDependency (concurrently)
-(cd server && npm install)
-(cd client && npm install)
-```
-
-On Windows PowerShell you can run sequentially:
+  <!-- The previous "Getting Started" section was intentionally removed to keep this README focused on the learning summary and architecture. I can reintroduce a quickstart later if needed. -->
 
 ```powershell
 npm install; cd server; npm install; cd ..; cd client; npm install; cd ..
@@ -339,15 +289,13 @@ Data Shape (`tasks.json`):
 
 ---
 
-## 🤝 Contributing
+## 👨‍💻 Developer
 
-1. Fork repo
-2. Create feature branch: `git checkout -b feat/awesome`
-3. Commit changes: `git commit -m "feat: add awesome"`
-4. Push branch: `git push origin feat/awesome`
-5. Open Pull Request
+| Name        | Role              | Notes |
+|-------------|-------------------|-------|
+| Danish Butt | Developer / Owner | First MERN project – exploring full‑stack patterns |
 
-Use conventional commits if possible (feat, fix, chore, docs, refactor, test).
+This is a personal learning project right now, so external contributions are paused until I solidify the roadmap. I may open it for issues / PRs later once I add MongoDB and tests.
 
 ---
 
@@ -359,16 +307,14 @@ This project is licensed under the ISC License (default in `package.json`). You 
 
 ## 🙏 Acknowledgements
 
-- React & Vite teams
-- Express maintainers
-- Inspiration: building robust persistence without a database
+I learned a lot from official docs (React, Vite, Express) and from experimenting with how to make file persistence safer. Even though this is my first MERN-style project, I tried to think about reliability early.
 
 ---
 
 ## 📌 Notes
 
-Express 5 is currently in stable release (5.1.x). If you prefer LTS stability semantics, you can lock to a specific minor version.
+Express 5 is currently in stable release (5.1.x). Future improvement: lock versions and introduce environment-based config + MongoDB.
 
 ---
 
-Happy hacking! 🚀
+Thanks for checking out my first MERN project! 🚀
